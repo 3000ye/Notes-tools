@@ -95,15 +95,28 @@ sudo apt install texlive-full
 
 `Winedt`的使用对于新手非常友好，且其非双栏设计也不会降低输入效率。相较于其他 $\LaTeX$ 编辑器的默认双栏，个人认为使用 $\LaTeX$ 的精髓就在于抛弃`Word`的所见即所得，达到随心所欲，在`tex`代码中遨游。
 
-相对的，如果你已经习惯了`Word`中的一些快捷键，那么建议你在`Winedt`中使用同样的设置。同时，`Winedt`也支持代码片段`snippet`，配置可参考：
+相对的，如果你已经习惯了`Word`中的一些快捷键，那么建议你在`Winedt`中使用同样的设置。同时，`Winedt`也支持代码片段`snippet`，配置可参考：[Winedt-HotKey](https://github.com/3000ye/Notes-tools/blob/main/Winedt-HotKey.md) 。
 
+### Vs Code
 
+如果你有多平台同步使用的需求，那么我建议你使用`Vs Code`来配置你的 $\LaTeX$ 编辑环境。这类文章网上已经有许多了，本文不再赘述。
 
 # Markdown
 
+`Markdown`是一种轻量级标记语言，排版语法简洁，让人们更多地关注内容本身而非排版。它使用易读易写的纯文本格式编写文档，可与`HTML`混编，可导出`HTML`、`PDF`以及本身的 `.md`格式的文件。
 
+## 使用帮助
 
+`Markdown`的语法非常简单，本文不再赘述。
 
+## 编辑器选择
 
+几乎市面上所有的编辑器都支持`Markdown`，本文仅对个人经常使用的编辑器做介绍：
 
+- `Typora`：个人认为最好用的编辑器，简洁而优雅，配合自定义`Themes`可以得到最舒适的`Markdown`编辑体验。
+- `Obsidian`：与`Typora`的简洁与优雅相对应，`Obsidian`更像是一个`Markdown`的`IDE`，以项目管理的形式管理文件。如果你有非常多、密集度高的`Markdown`文件，那么建议你使用它。
+
+### Typora
+
+这里主要对我个人使用的一些`Theme`进行一个备份，可见目录：。
 
