@@ -1,0 +1,633 @@
+% 页面设置
+\documentclass[12pt, a4paper]{article} % 字号：12，纸张：A4
+\usepackage[top=2.54cm, bottom=2.54cm, left=3.18cm,right=3.18cm]{geometry} % 页边距设置
+% 字体设置
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec} % 设置字体
+%\setCJKmainfont{SimSun}[AutoFakeBold=true, BoldFont={SimHei}, ItalicFont={KaiTi}] % 正文字体
+%\setCJKsansfont[AutoFakeBold=3]{KaiTi} % 无衬线字体
+%\setCJKmonofont[AutoFakeBold=3]{SimHei} % 等宽字体
+\setmainfont{Times New Roman} % 设置主字体为新罗马体
+% 文本设置
+\usepackage{enumerate} % 支持小标题编号
+\linespread{1.5} % 行间距1.5倍
+\usepackage{indentfirst}%首段缩进
+\setlength{\parindent}{2em} % 首行缩进两字符
+\usepackage[hidelinks]{hyperref} % 目录添加超链接
+\usepackage{zhnumber} % 章节标题中文显示
+\usepackage[cmyk]{xcolor} % 文字彩色显示
+% 数学支持
+\usepackage{amsmath} % 数学公式支持
+\usepackage{amssymb} % 数学符号支持
+\usepackage{bm} % 公式加粗
+\usepackage{mathrsfs} % 花体字母
+% 图片设置
+\usepackage{caption} % 插入图片标题
+\usepackage{float} % 控制图片位置
+\usepackage{subfigure} % 图片并排
+\usepackage{booktabs} % 插入表格
+% 表格设置
+\usepackage{multirow} % 表格自动换行
+\usepackage{bigstrut} % 表格间距
+\usepackage{rotating} % 表格旋转
+\usepackage{tabularx} % 表格宽度
+\usepackage{colortbl} % 表格颜色
+
+\title{The Foundations: Logic and Proofs} % 文章标题
+\author{Castor Ye} % 文章作者
+\date{} % 文章时间
+
+\begin{document} % 文档从这里开始。
+\maketitle % 按照预定的模板把上面那些信息排好。
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{定义}
+\newtheorem{example}{Example}
+\newtheorem{solution}{Solution}
+%\newtheorem{algorithm}{算法}
+%\newtheorem{axiom}{公理}
+%\newtheorem{property}{性质}
+%\newtheorem{proposition}{命题}
+%\newtheorem{lemma}{引理}
+%\newtheorem{corollary}{推论}
+%\newtheorem{remark}{注解}
+%\newtheorem{condition}{条件}
+%\newtheorem{conclusion}{结论}
+%\newtheorem{assumption}{假设}
+\renewcommand{\figurename}{Figure} % 将图片序号改为图
+\renewcommand{\tablename}{Table} % 将表格序号改为表
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 文章内容从此开始
+\section{Propositional Logic}
+\subsection{Propositions}
+
+A \textbf{proposition} is a declarative sentence (that is, a sentence that declares a fact) that is either true of false, but not both.
+
+\textcolor{teal}{\textbf{命题}是一个陈述语句（即陈述事实的语句），它可以或真或假，但不能既真又假。}
+
+We use letters to denote \textbf{propositional variables} (or \textbf{sentential variables}), that is, variables that represent propositions, just as letters are used to denote numerical variables.
+
+\textcolor{teal}{我们用字母来表示\textbf{命题变量}（或称为\textbf{语句变量}），即表示命题的变量，就像用字母表示数值变量那样。}
+
+The \textbf{truth value} of a proposition is true, denoted by T, if it is a true proposition, and the truth of a proposition is false, denoted by F, if it is a false proposition. Propositions that cannot be expressed in terms of simpler propositions are called \textbf{atomic propositions}.
+
+\textcolor{teal}{如果一个命题是真命题，则它的\textbf{真值}为真，用 T 表示；如果它是假命题，则其真值为假，用 F 表示。不能用简单命题表示的命题称为\textbf{原子命题}。}
+
+New propositions, called \textbf{compound propositions}, are formed from existing propositions using \textbf{logical operators}.
+
+\textcolor{teal}{由已知命题用\textbf{逻辑运算符}组合而来的新命题也被称为\textbf{复合命题}。}
+
+\begin{definition}
+    Let $p$ be a proposition. The \textit{negation} of $p$, denoted by $\neg p$ (also denoted by $\bar{p}$), is the statement "It is not the case that $p$."
+
+    The proposition $\neg p$ is read "not $p$." The truth value of the negation of $p$, $\neg p$, is the opposite of the truth value of $p$.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{令 $p$ 为一命题，则 $p$ 的否定记作 $\neg p$ （也可记作 $\bar{p}$），指“不是 $p$ 所指的情形”。命题 $\neg p$ 读作 “非 $p$”。$p$ 的否定（$\neg p$）的真值和$p$ 的真值相反。}
+\end{theorem}
+
+\begin{table}[H]
+    \centering
+    \caption{The Truth Table for the Negation of a Proposition.}
+    \begin{tabular}{c|c}
+        \toprule
+        $p$ & $\neg p$ \\
+        \midrule
+        $T$ & $F$      \\
+        $F$ & $T$      \\
+        \bottomrule
+    \end{tabular}%
+    \label{tab:1}%
+\end{table}%  
+
+We will now introduce the logical operators that are used to from new propositions from two or more existing propositions. These logical operators are also called \textbf{connectives}.
+
+\textcolor{teal}{
+    现在我们将引入从两个或多个已知命题构造新命题的逻辑运算符，这些运算符也称为\textbf{联结词}。
+}
+
+\begin{definition}
+    Let $p$ and $q$ be propositions. The \textbf{conjunction} of $p$ and $q$, denoted by $p \wedge q$, is the proposition "$p$ and $q$." The conjunction $p \wedge q$ is true when both $p$ and $q$ are true and is false otherwise.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        令 $p$ 和 $q$ 为命题，$p, q$ 的合取即命题“$p$ 且 $q$”，记作 $p \wedge q$。当 $p$ 和 $q$ 都是真时，$p \wedge q$ 命题为真，否则为假。
+    }
+\end{theorem}
+
+\begin{definition}
+    Let $p$ and $q$ be propositions. The \textbf{disjunction} of $p$ and $q$, denoted by $p \vee q$, is the proposition "$p$ or $q$." The disjunction $p \vee q$ is false when both $p$ and $q$ are false and is true otherwise.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        令 $p$ 和 $q$ 为命题，$p, q$ 的析取即命题“$p$ 或 $q$”，记作 $p \vee q$。当 $p$ 和 $q$ 都是假时，析取命题 $p \vee q$ 为假，否则为真。
+    }
+\end{theorem}
+
+\begin{minipage}[c]{0.45\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \caption{The Truth Table for the Conjunction of Two Propositions}
+        \begin{tabular}{cc|c}
+            \toprule
+            $p$ & $q$ & $p \wedge q$ \\
+            \midrule
+            $T$ & $T$ & $T$          \\
+            $T$ & $F$ & $F$          \\
+            $F$ & $T$ & $F$          \\
+            $F$ & $F$ & $F$          \\
+            \bottomrule
+        \end{tabular}%
+        \label{tab:2}%
+    \end{table}%
+\end{minipage}
+\begin{minipage}[c]{0.45\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \caption{The Truth Table for the Disjunction of Two Propositions}
+        \begin{tabular}{cc|c}
+            \toprule
+            $p$ & $q$ & $p \vee q$ \\
+            \midrule
+            $T$ & $T$ & $T$        \\
+            $T$ & $F$ & $T$        \\
+            $F$ & $T$ & $T$        \\
+            $F$ & $F$ & $F$        \\
+            \bottomrule
+        \end{tabular}%
+        \label{tab:3}%
+    \end{table}%
+\end{minipage}
+
+\begin{definition}
+    Let $p$ and $q$ be propositions. The \textbf{exclusive or} of $p$ and $q$, denoted by $p \oplus q$ (or $p$ XOR $q$), is the proposition that is true when exactly one of $p$ and $q$ is true and is false otherwise.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        令 $p$ 和 $q$ 为命题，$p$ 和 $q$ 的异或（记作 $p \oplus q$）是这样一个命题：当 $p$ 和 $q$ 中恰好只有一个为真时命题为真，否则为假。
+    }
+\end{theorem}
+
+\subsection{Conditional Statement}
+
+\begin{definition}
+    Let $p$ and $q$ be propositions. The \textbf{conditional statement} $p \to q$ is the proposition "if $p$, then q." The conditional statement $p \to q$ is false when $p$ is true and $q$ is false, and true otherwise. In the conditional statement $p \to q$, $p$ is called the \textbf{hypothesis} (or \textbf{antecedent} or \textbf{premise}) and $q$ is called the \textbf{conclusion} (or \textbf{consequence}).
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        令 $p$ 和 $q$ 为命题，条件语句 $p \to q$ 是命题“如果 $p$，则 $q$”。当 $p$ 为真而 $q$ 为假时，条件语句 $p \to q$ 为假，否则为真。在条件语句 $p \to q$ 中，$p$ 称为假设（前件、前提），$q$ 称为结论（后件）。
+    }
+\end{theorem}
+
+The statement $p \to q$ is called a conditional statement because $p \to q$ asserts that $q$ is true on the condition that $p$ holds. A conditional statement is also called an \textbf{implication}.
+
+\textcolor{teal}{
+    语句 $p \to q$ 称为条件语句，因为 $p \to q$ 可以断定条件 $p$ 成立的时候 $q$ 为真，条件语句也称为\textbf{蕴含}。
+}
+
+\begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \caption{The Truth Table for the Exclusive of Two Propositions}
+        \begin{tabular}{cc|c}
+            \toprule
+            $p$ & $q$ & $p \oplus q$ \\
+            \midrule
+            $T$ & $T$ & $F$          \\
+            $T$ & $F$ & $T$          \\
+            $F$ & $T$ & $T$          \\
+            $F$ & $F$ & $F$          \\
+            \bottomrule
+        \end{tabular}%
+        \label{tab:4}%
+    \end{table}%
+\end{minipage}
+\begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \caption{The Truth Table for the Conditional Statement of Two Propositions}
+        \begin{tabular}{cc|c}
+            \toprule
+            $p$ & $q$ & $p \to q$ \\
+            \midrule
+            $T$ & $T$ & $T$       \\
+            $T$ & $F$ & $F$       \\
+            $F$ & $T$ & $T$       \\
+            $F$ & $F$ & $T$       \\
+            \bottomrule
+        \end{tabular}%
+        \label{tab:5}%
+    \end{table}%
+\end{minipage}
+
+\textbf{CONVERSE, CONTRAPOSITIVE, AND INVERSE}:
+We can form some new conditional statement starting with a conditional statement $p \to q$. In particular, there are three related conditional statements that occur so often that they have special names. The proposition $q \to p$ is called the \textbf{converse} of $p \to q$. The \textbf{contrapositive} of $p \to q$ is the proposition $\neg q \to \neg p$. The proposition $\neg p \to \neg q$ is called the \textbf{inverse} of $p \to q$. We will see that of these three conditional statements formed from $p \to q$, only the contrapositive always has the same truth value as $p \to q$.
+
+\textcolor{teal}{
+    \textbf{逆命题、逆否命题、反命题}：由条件语句 $p \to q$ 可以构成一些新的条件语句，特别是三个常见的相关条件语句还拥有特殊的名称。命题 $q \to p$ 称为 $p \to q$ 的\textbf{逆命题}，而 $p \to q$ 的\textbf{逆否命题}是命题 $\neg q \to \neg p$。命题 $\neg p \to \neg q$ 称为 $p \to q$ 的\textbf{反命题}。我们发现，只有逆否命题总是和 $p \to q$ 有相同的真值。
+}
+
+When two compound propositions always have the same truth values, regardless of the truth values of its propositional variables, we call them \textbf{equivalent}. Hence, a conditional statement and its contrapositive are equivalent. The converse and the inverse of a conditional statement are also equivalent.
+
+当两个复合命题总是具有相同真值时，无论其命题变量的真值是什么，我们称它们是\textbf{等价的}。因此一个条件语句与它的逆否命题是等价的，条件语句的逆与反也是等价的。
+
+\textbf{BICONDITIONALS}:
+We now introduce another way to combine propositions that expresses that two propositions have the same truth value.
+
+\textcolor{teal}{
+    \textbf{双条件语句}：现在我们介绍另外一种命题复合方式来表达两个命题具有相同真值。
+}
+
+\begin{definition}
+    Let $p$ and $q$ be propositions. The \textbf{biconditional statement} $p \leftrightarrow q$ is the proposition "if $p$ and only if $q$." The biconditional statement $p \leftrightarrow q$ is true when $p$ and $q$ have the same truth values, and is false otherwise. Biconditional statements are also called \textbf{bi-implications}.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        令 $p$ 和 $q$ 为命题，双条件语句 $p \leftrightarrow q$ 是命题“$p$ 当且仅当 $q$”。当 $p$ 和 $q$ 有同样的真值时，双条件语句为真，否则为假。双条件语句也称为双向蕴含。
+    }
+\end{theorem}
+
+\begin{table}[H]
+    \centering
+    \caption{The Truth Table for the Biconditional $p \leftrightarrow q$}
+    \begin{tabular}{cc|c}
+        \toprule
+        $p$ & $q$ & $p \leftrightarrow q$ \\
+        \midrule
+        $T$ & $T$ & $T$                   \\
+        $T$ & $F$ & $F$                   \\
+        $F$ & $T$ & $F$                   \\
+        $F$ & $F$ & $T$                   \\
+        \bottomrule
+    \end{tabular}%
+    \label{tab:6}%
+\end{table}%
+
+\subsection{Truth Tables of Compound Propositions}
+
+We have now introduce five important logical connectives: conjunction, disjunction, exclusive or, implication, and the biconditional operator, as well as negation. We can use these connectives to build up complicated compound propositions involving any number of propositional variables.
+
+\textcolor{teal}{
+    我们已经介绍了五个重要的逻辑联结词：合取、析取、异或、蕴含、双条件。此外，我们还介绍了否定。可以用这些联结词来构造含有一些命题变量的结构复杂的复合命题。
+}
+
+\begin{example}
+    Construct the truth table of the compound proposition $(p \vee \neg q) \to (p \wedge q)$.
+\end{example}
+
+\begin{table}[H]
+    \centering
+    \caption{The Truth Table of $(p \vee \neg q) \to (p \wedge q)$}
+    \begin{tabular}{cc|ccc|c}
+        \toprule
+        $p$ & $q$ & $\neg q$ & $p \vee \neg q$ & $p \wedge q$ & $(p \vee \neg q) \to (p \wedge q)$ \\
+        \midrule
+        $T$ & $T$ & $F$      & $T$             & $T$          & $T$                                \\
+        $T$ & $F$ & $T$      & $T$             & $F$          & $F$                                \\
+        $F$ & $T$ & $F$      & $F$             & $F$          & $T$                                \\
+        $F$ & $F$ & $T$      & $T$             & $F$          & $F$                                \\
+        \bottomrule
+    \end{tabular}%
+    \label{tab:7}%
+\end{table}%
+
+\subsection{Precedence of Logical Operators}
+
+We can construct compound propositions using the negation operator and the logical operators defined so far.
+However, to reduce the number of parentheses, we specify an order of precedence for logical operators.
+
+\textcolor{teal}{
+    我们可以用所定义的否定运算符和逻辑运算符来构造复合命题，通常使用括号来规定复合命题中的逻辑运算符的作用顺序。
+    然而，为了减少括号的数量，我们规定了逻辑运算符的优先级顺序。
+}
+
+\begin{table}[H]
+    \centering
+    \caption{Precedence of Logical Operators}
+    \begin{tabular}{c|c}
+        \toprule
+        Operator          & Precedence \\
+        \midrule
+        $\neg$            & 1          \\
+        \midrule
+        $\wedge$          & 2          \\
+        $\vee$            & 3          \\
+        \midrule
+        $\to$             & 4          \\
+        $\leftrightarrow$ & 5          \\
+        \bottomrule
+    \end{tabular}%
+    \label{tab:8}%
+\end{table}%
+
+\subsection{Logic and Bit Operations}
+
+Computers represent information using bits. A \textbf{bit} is a symbol with two possible values, namely, $0$(zero) and $1$(one). This meaning of the word bit comes from \textit{binary digit}, because zeros and ones are the digits used in binary representations of numbers.
+As is customarily done, we will use a 1 bit to represent true and a 0 bit to represent false. That is, $1$ represent $T$(true), $0$ represent $F$(false). A variable is called a \textbf{Boolean variable} if its value is either true or false.
+
+\textcolor{teal}{
+    计算机用比特表示信息，\textbf{比特}是一个具有两个可能值的符号，即 $0$ 和 $1$。比特一次的含义来自\textit{二进制数字}，因为 $0$ 和 $1$ 是数的二进制表示中用到的数字。
+    习惯上，我们用 $1$ 表示真，用 $0$ 表示假。如果一个变量的值为真或为假，则此变量就称为\textbf{布尔变量}。
+}
+
+\begin{table}[H]
+    \centering
+    \caption{Table for the Bit Operators OR, AND, and XOR}
+    \begin{tabular}{cc|ccc}
+        \toprule
+        $x$ & $y$ & $x \vee y$ & $x \wedge y$ & $x \oplus y$ \\
+        \midrule
+        0   & 0   & 0          & 0            & 0            \\
+        0   & 1   & 1          & 0            & 1            \\
+        1   & 0   & 1          & 0            & 1            \\
+        1   & 1   & 1          & 1            & 0            \\
+        \bottomrule
+    \end{tabular}%
+    \label{tab:9}%
+\end{table}%
+
+\begin{definition}
+    A bit \textbf{string} is a sequence of zero or more bits. The \textbf{length} of this string is the number of bits in the stirng.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        比特串是 $0$ 比特或多比特的序列，比特串的长度就是它所含比特的数目。
+    }
+\end{theorem}
+
+\subsection{Exercises}
+
+常见描述：
+
+\begin{enumerate}[\hspace{2em} i.]
+    \item $p$ 是 $q$ 的充分条件，$q$ 是 $p$ 的必要条件 $\Rightarrow p \to q$
+    \item $p$ 是 $q$ 的不充分条件，$q$ 是 $p$ 的不必要条件 $\Rightarrow \neg (p \to q)$
+    \item $p$ 是 $q$ 的必要不充分条件 $\Rightarrow (q \to p) \wedge \neg (p \to q)$
+    \item $p$ 是 $q$ 的充分不必要条件 $\Rightarrow (p \to q) \wedge \neg (q \to p)$
+    \item $p$ 是 $q$ 的充分必要条件，$p$ 当且仅当 $q$ $\Rightarrow p \leftrightarrow q$
+\end{enumerate}
+
+\section{Applications of Propositional Logic}
+\subsection{Translating English Sentences}
+
+There are many reasons to translate English sentences into expressions involving propositional variables and logical connectives. In particular, English (and every other human language) is often ambiguous.
+Translating sentences into compound statements removes the ambiguity. Note that may involve making a set of reasonable assumptions based on the intended meaning of the sentence.
+
+\textcolor{teal}{
+    有许多理由需要把自然语言翻译成有命题变量和逻辑联结词组成的表达式，特别是，汉语（以及其他各种人类语言）常有二义性，把语句翻译成复合命题可以消除歧义。
+}
+
+\begin{example}
+    将该语句翻译为逻辑表达式：如果你身高不足 4 英尺，那么你不能乘坐过山车，除非你已满 16 周岁。
+\end{example}
+
+令 $q, r, s$ 分别表示：“你能乘坐过山车”，“你身高不足 4 英尺”，“你已年满 16 周岁”，则可翻译为：$(r \wedge \neg s) \to \neg q$
+
+\section{Propositional Equivalences}
+\subsection{Introduction}
+
+An important type of step used in a mathematical argument is the replacement of a statement with another statement with the same truth value.
+Because of this, methods that produce propositions with the same truth value as a given compound proposition are used extensively in the construction of mathematical arguments.
+Note that we will use the term "compound proposition" to refer to an expression formed from propositional variables using logical operators, such as $p \wedge q$.
+
+\textcolor{teal}{
+    数学证明中使用的一个重要步骤就是用真值相同的一条语句替换另一条语句。因此，从给定复合命题生成具有相同真值命题的方法广泛使用于数学证明的构造。注意，我们用术语“复合命题”来值由命题变量通过逻辑运算形成的一个表达式，如 $p \wedge q$。
+}
+
+\begin{definition}
+    A compound proposition that is always true, no matter what the truth values of the propositional variables that occur in it, is called a \textbf{tautology}.
+    A compound proposition that is always false is called a \textbf{contradiction}.
+    A compound proposition that is neither a tautology nor a contradiction is called a \textbf{contingency}.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        一个真值永远为真的复合命题称为永真式，一个真值永远为假的复合命题称为矛盾式，既不是永真式又不是矛盾式的复合命题称为可能式。
+    }
+\end{theorem}
+
+\subsection{Logical Equivalences}
+
+Compound propositions that have the same truth values in all possible cases are called \textbf{logical equivalent}.
+
+\textcolor{teal}{
+    在所有可能的情况下都具有相同真值的两个复合命题称为\textbf{逻辑等价}的。
+}
+
+\begin{definition}
+    The compound propositions $p$ and $q$ are called \textbf{logically equivalent} if $p \leftrightarrow q$ is a tautology.
+    The Notation $p \equiv q$ denotes that $p$ and $q$ are logically equivalent.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        如果 $p \leftrightarrow q$ 是永真式，则复合命题 $p$ 和 $q$ 称为是逻辑等价的。用记号 $p \equiv q$ 表示 $p$ 和 $q$ 是逻辑等价的。
+    }
+\end{theorem}
+
+One way to determine whether two compound propositions are equivalent is to use a truth table. In particular, the compound propositions $p$ and $q$ are equivalent if and only if the columns giving their truth values agree.
+
+\textcolor{teal}{
+    判定两个复合命题是否等价的方法之一是使用真值表。特别地，复合命题 $p$ 和 $q$ 是等价的当且仅当对应它们的真值的两列完全一致。
+}
+
+\textbf{De Morgan laws}: $\neg (p \wedge q) \equiv \neg p \vee \neg q, \neg (p \vee q) \equiv \neg p \wedge \neg q$
+
+\textcolor{teal}{
+    \textbf{德·摩登律}：$\neg (p \wedge q) \equiv \neg p \vee \neg q, \neg (p \vee q) \equiv \neg p \wedge \neg q$
+}
+
+\begin{table}[H]
+    \centering
+    \caption{Logical Equivalences}
+    \begin{tabular}{c|cc}
+        \toprule
+        Equivalence                                                                                & Name                & 名称       \\
+        \midrule
+        $p \wedge T \equiv p, p \vee F \equiv p$                                                   & Identity laws       & 恒等律     \\
+        $p \vee T \equiv T, p \wedge F \equiv F$                                                   & Domination laws     & 支配律     \\
+        $p \vee p \equiv p, p \wedge p \equiv p$                                                   & Idempotent laws     & 幂等律     \\
+        $\neg (\neg p) \equiv p$                                                                   & Double negation law & 双重否定律 \\
+        $p \vee q \equiv q \vee p, p \wedge q \equiv q \wedge p$                                   & Commutative laws    & 交换律     \\
+        $(p \vee q) \vee r \equiv p \vee (q \vee r)$                                               & Associative laws    & 结合律     \\
+        $(p \wedge q) \wedge r \equiv p \wedge (q \wedge r)$                                       & Associative laws    & 结合律     \\
+        $p \vee (q \wedge r) \equiv (p \vee q) \wedge (p \vee r)$                                  & Distributive laws   & 分配律     \\
+        $p \wedge (q \vee r) \equiv (p \wedge q) \vee (p \wedge r)$                                & Distributive laws   & 分配律     \\
+        $\neg (p \wedge q) \equiv \neg p \vee \neg q, \neg (p \vee q) \equiv \neg p \wedge \neg q$ & De Morgan's laws    & 德·摩根律  \\
+        $p \vee \neg p \equiv T, p \wedge \neg p \equiv F$                                         & Negation laws       & 否定律     \\
+        \bottomrule
+    \end{tabular}%
+    \label{tab:10}%
+\end{table}%
+
+\begin{table}[H]
+    \centering
+    \caption{Logical Equivalences Involving Conditional Statements}
+    \begin{tabular}{c|c}
+        \toprule
+        $p \to q \equiv \neg p \vee q$                                        & $p \to q \neg \neg q \to \neg p$                             \\
+        $p \vee q \equiv \neg p \to q$                                        & $p \wedge q \equiv \neg (p \to \neg q)$                      \\
+        $\neg (p \to q) \equiv p \wedge \neg q$                               &                                                              \\
+        $(p \to q) \wedge (p \to r) \equiv p \to (q \wedge r)$                & $(p \to r) \wedge (q \to r) \equiv (p \vee q) \to r$         \\
+        $(p \to q) \vee (p \to r) \equiv p \to (q \vee r)$                    & $(p \to r) \vee (q \to r) \equiv (p \wedge q) \to r$         \\
+        $p \leftrightarrow q \equiv (p \to q) \wedge (q \to p)$               & $p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q$   \\
+        $p \leftrightarrow q \equiv (p \wedge q) \vee (\neg p \wedge \neg q)$ & $\neg (p \leftrightarrow q) \equiv p \leftrightarrow \neg q$ \\
+        \bottomrule
+    \end{tabular}%
+    \label{tab:11}%
+\end{table}%
+
+The associative law for disjunction shows the expression $p \vee q \vee r$ is well defined, in the sense that it does not matter whether we first take the disjunction of $p$ with $q$ and then the disjunction of $p \vee q$ with $r$, or if we first take the disjunction of $q$ and $r$ and then take the disjunction of $p$ with $q \vee r$. Similarly, the expression $p \wedge q \wedge r$ is well defined. By extending this reasoning, it follows that $p_1 \vee p_2 \vee \cdots \vee p_n$ and $p_1 \wedge p_2 \wedge \cdots \wedge p_n$ are well defined whenever $p_1, p_2, \cdots, p_n$ are propositions.
+
+\textcolor{teal}{
+    析取的结合律表明表达式 $p \vee q \vee r$ 下下面的意义下是良定义的：无论是先做 $p$ 和 $q$ 的析取再做 $p \vee q$ 和 $r$ 的析取，还是先做 $q$ 和 $r$ 的析取再做 $p$ 和 $q \vee r$ 的析取，其结果都是一样的。同样，$p \wedge q \wedge r$ 也是良定义的。扩展这一推理过程可以得到：只要 $p_1, p_2, \cdots, p_n$ 为命题，$p_1 \vee p_2 \vee \cdots \vee p_n$ 和 $p_1 \wedge p_2 \wedge \cdots \wedge p_n$ 均有定义。
+}
+
+Furthermore, note that De Morgan's laws extend to:
+
+$$
+    \neg (p_1 \vee p_2 \vee \cdots \vee p_n) \equiv (\neg p_1 \wedge \neg p_2 \wedge \cdots \wedge \neg p_n)
+$$
+$$
+    \neg (p_1 \wedge p_2 \wedge \cdots \wedge p_n) \equiv (\neg p_1 \vee \neg p_2 \vee \cdots \vee \neg p_n)
+$$
+
+\textcolor{teal}{
+    德·摩根律可以扩展为：$$\neg (p_1 \vee p_2 \vee \cdots \vee p_n) \equiv (\neg p_1 \wedge \neg p_2 \wedge \cdots \wedge \neg p_n)$$
+    $$\neg (p_1 \wedge p_2 \wedge \cdots \wedge p_n) \equiv (\neg p_1 \vee \neg p_2 \vee \cdots \vee \neg p_n)$$
+}
+
+We will sometimes use the notation $\bigvee_{j = 1}^{n} p_j$ for $p_1 \vee p_2 \vee \cdots \vee p_n$ and $\bigwedge_{j = 1}^{n} p_j$ for $p_1 \wedge p_2 \wedge \cdots \wedge p_n$.
+Using this notation, the extended version of De Morgan's laws can be written concisely as $\neg (\bigvee_{j = 1}^{n} p_j) \equiv \bigwedge_{j = 1}^{n} \neg p_j$ and $\neg (\bigwedge_{j = 1}^{n} p_j) \equiv \bigvee_{j = 1}^{n} \neg p_j$.
+
+\textcolor{teal}{
+    我们有时用符号 $\bigvee_{j = 1}^{n} p_j$ 来表示 $p_1 \vee p_2 \vee \cdots \vee p_n$，用 $\bigwedge_{j = 1}^{n} p_j$ 来表示  $p_1 \wedge p_2 \wedge \cdots \wedge p_n$。
+    德·摩根律就可以改写为：$\neg (\bigvee_{j = 1}^{n} p_j) \equiv \bigwedge_{j = 1}^{n} \neg p_j$ 和 $\neg (\bigwedge_{j = 1}^{n} p_j) \equiv \bigvee_{j = 1}^{n} \neg p_j$。
+}
+
+\section{Predicates and Quantifiers}
+\subsection{Predicates}
+
+The statement "$x$ is greater than $3$" has two parts. The first part, the variable $x$, is the subject of the statement. The second part - the \textbf{predicate}, "is greater than $3$" - refers to a property that the subject of the statement can have.
+We can denote the statement "$x$ is greater than $3$" by $P(x)$, where $P$ denotes the predicate "is greater than $3$" and $x$ is the variable. The statement $P(x)$ is also said to be the value of the \textbf{propositional function} $P$ at $x$. Once a value has been assigned to the variable $x$, the statement $P(x)$ becomes a proposition and has a truth value.
+
+\textcolor{teal}{
+    语句“$x$ 大于 $3$”有两个部分。第一部分即变量 $x$ 是语句的主语。第二部分（\textbf{谓词}“大于 $3$”）表明语句的主语具有一个性质。我们可以用 $P(x)$ 表示语句“$x$ 大于 $3$”，其中 $P$ 表示谓词“大于 $3$”，而 $x$ 是变量。语句 $P(x)$ 也可以说成是命题函数 $P$ 在 $x$ 的值。一旦给变量 $x$ 赋一个值，语句 $P(x)$ 就成为命题并具有真值。
+}
+
+\begin{example}
+    令 $P(x)$ 表示语句“$x > 3$”，求 $P(2), P(4)$ 的真值。
+\end{example}
+$$P(2) \Rightarrow 2 > 3 = F, P(4) \Rightarrow 4 > 3 = T$$
+
+In general, a statement involving the $n$ variables $x_1, x_2, \cdots, x_n$ can be denoted by $P(x_1, x_2, \cdots, x_n)$.
+A statement of the form $P(x_1, x_2, \cdots, x_n)$ is the value of the \textbf{propositional function} $P$ at the n-tuple ($x_1, x_2, \cdots, x_n$), and $P$ is also called an \textbf{n-place predicate} or an \textbf{n-ary predicate}.
+
+\textcolor{teal}{
+    一般地，涉及 $n$ 个变量 $x_1, x_2, \cdots, x_n$ 的语句可以表示成 $P(x_1, x_2, \cdots, x_n)$，形式为 $P(x_1, x_2, \cdots, x_n)$ 的语句是\textbf{命题函数} $P$ 在 $n$ 元组（$x_1, x_2, \cdots, x_n$）中的值，$P$ 也称为\textbf{$n$ 位谓词}或\textbf{$n$元谓词}。
+}
+
+\textbf{PRECONDITIONS AND POSTCONDITIONS}: Predicates are also used to establish the correctness of computer programs, that is, to show that computer programs always produce the desired output when given valid input. The statements that describe valid input are known as \textbf{preconditions} and the conditions that the output should satisfy when the program has run are known as \textbf{postconditions}.
+
+\textcolor{teal}{
+    \textbf{前置条件和后置条件}：谓词还可以用来验证计算机程序，也就是证明当给定合法输入时计算机程序总是能产生所期望的输出。描述合法输入的语句叫作\textbf{前置条件}，而程序运行的输出应满足的条件称为\textbf{后置条件}。
+}
+
+\subsection{Quantifiers}
+
+We will focus on two types of quantification here: universal quantification, which tells us that a predicate is true for every element under consideration, and existential quantification, which tells us that there is one or more element under consideration for which the predicate is true. The area of logic that deals with predicates and Quantifiers is called the \textbf{predicate calculus}.
+
+\textcolor{teal}{
+    这里我们集中讨论两类量化：全称量化，它告诉我们一个谓词在所考虑范围内对每一个体都为真；存在量化，它告诉我们一个谓词在所考虑范围内对一个或多个个体为真。处理谓词和量词的逻辑领域称为\textbf{谓词演算}。
+}
+
+\textbf{THE UNIVERSAL QUANTIFIER} Many mathematical statements assert that a property is true for all values of a variable in a particular domain, called the \textbf{domain of discourse} (or the \textbf{universe of discourse}), often just referred to as the \textbf{domain}.
+The domain must always be specified when a universal quantifier is used; without it, the universal quantification of a statement is not defined.
+
+\textcolor{teal}{
+    \textbf{全称量词} 许多数学命题断言某一性质对于变量在某一特定域内的所有值均为真，这一定域称为变量的\textbf{论域}（或\textbf{全体域}），时常简称为\textbf{域}。
+    在使用全称量词时必须指定论域，否则语句的\textbf{全称量化}就是无定义的。
+}
+
+\begin{definition}
+    The \textbf{universal quantification} of $P(x)$ is the statement "$P(x)$ for all values of $x$ in the domain."
+    The notation $\forall x P(x)$ denotes the universal quantification of $P(x)$. Here $\forall$ is called the \textbf{universal quantifier}. We read $\forall x P(x)$ as "for all $x P(x)$" or "for every $x P(x)$." An element for which $P(x)$ is false is called a $counterexample$ to $\forall x P(x)$.
+\end{definition}
+
+\begin{theorem}
+    \textcolor{teal}{
+        $P(x)$ 的全称量化是语句“$P(x)$ 对 $x$ 在其论域的所有值为真。”符号 $\forall x P(x)$ 表示 $P(x)$ 的全称量化，其中 $\forall$ 称为全称量词。命题 $\forall x P(x)$ 读作“对所有 $x$，$P(x)$”或“对每个 $x$，$P(x)$”。一个使 $P(x)$ 为假的个体称为 $\forall x P(x)$ 的反例。
+    }
+\end{theorem}
+
+\begin{table}[H]
+    \centering
+    \caption{Quantifiers}
+    \begin{tabular}{c|cc}
+        \toprule
+        Statement & When True? & When False? \\
+        \midrule
+        $\forall x P(x)$ & $P(x)$ is true for every $x$. & There is an $x$ for which $P(x)$ is false. \\
+        $\exists x P(x)$ & There is an $x$ for which $P(x)$ is true. & $P(x)$ is false for every $x$. \\
+        \bottomrule
+    \end{tabular}%
+    \label{tab:12}%
+\end{table}%
+
+\textbf{THE EXISTENTIAL QUANTIFIER}: Many mathematical statements assert that there is an element with a certain property. Such statements are expressed using esistential quantification.
+With existential quantification, we form a proposition that is true if and only if $P(x)$ is true for at least one value of $x$ in the domain.
+
+\textcolor{teal}{
+    \textbf{存在量词}：许多数学定理断言：有一个个体使得某种性质成立。这类语句可以用存在量化表示。我们可以用存在量化构成这样一个命题：该命题为真当且仅当论域中至少有一个 $x$ 的值使得 $P(x)$ 为真。
+}
+
+\begin{definition}
+    The \textbf{existential quantification} of $P(x)$ is the proposition "There exists an element $x$ in the domain such that $P(x)$."
+    We use the notation $\exists x P(x)$ for the existential quantification of $P(x)$. Here $\exists$ is called the \textbf{existential quantifier}.
+\end{definition}
+
+\begin{theorem}
+    $P(x)$ 的存在量化是命题“论域中存在一个个体 $x$ 满足 $P(x)$”。我们用符号 $\exists x P(x)$ 表示 $P(x)$ 的存在量化，其中 $\exists$ 称为存在量词。
+\end{theorem}
+
+A domain must always be specified when a statement $\exists x P(x)$ is used. Furthermore, the meaning of $\exists x P(x)$ changes when the domain changes.
+Without specifying the domain, the statement $\exists x P(x)$ has no meaning.
+
+\textcolor{teal}{
+    当使用语句 $\exists x P(x)$ 时，必须指定一个论域。而且，当论域变化时，$\exists x P(x)$ 的意义也随之改变。如果没有指定论域，那么语句 $\exists x P(x)$ 没有意义。
+}
+
+\textbf{THE UNIQUENESS QUANTIFIER}: Of these other Quantifiers, the one that is most often seen is the \textbf{uniqueness quantifier}, denoted by $\exists !$ or $\exists _1$.
+
+\textcolor{teal}{
+    \textbf{唯一性量词}：所有其他量词中最常见的是\textbf{唯一性量词}，用符号 $\exists !$ 或 $\exists _1$ 表示。$\exists ! x P(x)$ 这种表示法指“存在一个唯一的 $x$ 使得 $P(x)$ 为真”。
+}
+
+\subsection{QUANTIFIERS OVER FINITE DOMAINS}
+
+When the domain of a quantifier is finite, that is, when all its elements can be listed, quantified statements can be expressed using propositional logic.
+In particular, when the elements of the domain are $x_1, x_2, \cdots, x_n$, where $n$ is a positive integer, the universal quantification $\forall x P(x)$ is the same as the conjunction $P(x_1) \wedge P(x_2) \wedge \cdots \wedge P(x_n)$ because this conjunction is true if and only if $P(x_1), P(x_2), \cdots, P(x_n)$ are all true.
+
+\textcolor{teal}{
+    当一个量词的域是有限的时候，即所有元素可以一一列出时，量化语句就可以用命题逻辑来表达。特别是，当论域中的元素为 $x_1, x_2, \cdots, x_n$，其中 $n$ 是一个正整数，则全称量化 $\forall x P(x)$ 与合取式 $P(x_1) \wedge P(x_2) \wedge \cdots \wedge P(x_n)$ 想同，因为这一合取式为真当且仅当 $P(x_1), P(x_2), \cdots, P(x_n)$ 全部为真。
+}
+
+\subsection{Negating Quantified Expressions}
+
+考虑语句的否定：班上每一个学生都学过一门微积分课。
+
+则全命题为：$\forall x P(x)$，其否定为：$\exists x \neg P(x)$。
+
+德·摩根律：$\neg \exists x P(x) \equiv \forall x \neg P(x), \neg \forall x P(x) \equiv \exists x \neg P(x)$
+
+\end{document}
