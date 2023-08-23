@@ -42,7 +42,7 @@ sudo apt install texlive-full
 \setmainfont{Times New Roman} % 设置主字体为新罗马体
 ```
 
-#### 中文字体
+#### 中文字体说明
 
 目前，$\LaTeX$ 主流中文文档类支持是通过`ctex`宏包，使用`xelatex + ctex`编译方案，其中底层宏包为`xeCJK`。
 
@@ -52,7 +52,7 @@ sudo apt install texlive-full
 
 而诸如`Unubtu`等发行版并不自带`Fandol`字库，本仓库已上传至[Fonts](https://github.com/3000ye/Notes-tools/tree/main/Fonts)。或者访问[作者网页](https://www.ctan.org/pkg/fandol)获取。
 
-#### 字体使用
+#### 中文字体使用
 
 如果使用`ctex`默认字体，则只需在导言区加入如下代码：
 
@@ -62,7 +62,17 @@ sudo apt install texlive-full
 \usepackage{fontspec} % 设置字体
 ```
 
+如需自定义字体，则可简单参照以下格式：
 
+```tex
+\usepackage[UTF8, fontset=none]{ctex}  % 清除默认字体
+\usepackage{fontspec}  % 设置字体
+\setCJKmainfont{SimSun}[AutoFakeBold=true, BoldFont={SimHei}, ItalicFont={KaiTi}]  % 正文字体
+\setCJKsansfont[AutoFakeBold=3]{KaiTi} % 无衬线字体
+\setCJKmonofont[AutoFakeBold=3]{SimHei} % 等宽字体
+```
+
+具体字体使用可以参阅[LaTeX 中文字体配置基础指南](https://zhuanlan.zhihu.com/p/538459335)。
 
 ## Markdown
 
