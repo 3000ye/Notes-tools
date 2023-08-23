@@ -2,7 +2,7 @@
 
 针对学习和工作中使用 $\LaTeX$ 与`Markdown`的使用帮助清单，已在`Linux(Ubuntu 22.04)`、`Linux(Wsl-Ubuntu 22.04)`、`Windows 11`实现部署与验证。
 
-## Latex
+# Latex
 
 $\LaTeX$ 是一个文档准备系统 (Document Preparing System)，它非常适用于生成高印刷质量的科技类和数学类文档。它也能够生成所有其他种类的文档，小到简单的信件，大到完整的书籍。 $\LaTeX$ 使用 $\TeX$ 作为它的排版引擎，学习 $\LaTeX$ 是一个漫长而痛苦的过程，我们应该充分利用已知的资料，来尽量完成我们的需求。
 
@@ -13,6 +13,8 @@ TeX 3.141592653 (TeX Live 2022/dev/Debian)
 kpathsea version 6.3.4/dev
 Copyright 2021 D.E. Knuth.
 ```
+
+## 使用帮助
 
 ### 安装
 
@@ -29,6 +31,8 @@ sudo apt install texlive-full
 ### 基础教程
 
 本仓库不提供具体教程，新手可以阅读 [Ishort-zh-cn](https://mirror-hk.koddos.net/CTAN/info/lshort/chinese/lshort-zh-cn.pdf) 入门，这几乎是最好的入门教程。
+
+本仓库的 [Easy-Latex](https://github.com/3000ye/Notes-tools/blob/main/Easy-Latex.md) 也给出了一些常用的排版模板。
 
 ### 字体设置
 
@@ -74,7 +78,28 @@ sudo apt install texlive-full
 
 具体字体使用可以参阅[LaTeX 中文字体配置基础指南](https://zhuanlan.zhihu.com/p/538459335)。
 
-## Markdown
+## 编辑器选择
+
+市面上有很多 $\LaTeX$ 编辑器，下面是一些**主观**评价：
+
+- `TexStudio`：几乎所有教程都推荐的编辑器，但我觉得界面过于丑陋所以基本没用过，优点是免费。
+- `Winedt`：`Windows`平台最强大的 $\LaTeX$ 编辑器，我的主力编辑器之一。优点是完全的自定义与完美的界面设计，使用体验好比`IDEA`之于`Java`，缺点是`Windows`独占。
+- `Vs Code`：作为地表最强编辑器，`Vs Code`也能实现完美编辑 $\LaTeX$，并全平台通用，缺点是配置较为繁琐。
+- `Overleaf`：在线的 $\LaTeX$ 编辑器，个人觉得可以作为体验 $\LaTeX$ 而简单使用，因其为在线编辑器，并不建议高强度使用。
+
+下面根据我自身使用情况，介绍`Winedt`与`Vs Code`的使用配置。
+
+### Winedt
+
+建议安装最新版的`Winedt 11`，这一版本内置了`PDF`阅读器，自带双向索引，但需要付费购买（买断制）。
+
+`Winedt`的使用对于新手非常友好，且其非双栏设计也不会降低输入效率。相较于其他 $\LaTeX$ 编辑器的默认双栏，个人认为使用 $\LaTeX$ 的精髓就在于抛弃`Word`的所见即所得，达到随心所欲，在`tex`代码中遨游。
+
+相对的，如果你已经习惯了`Word`中的一些快捷键，那么建议你在`Winedt`中使用同样的设置。同时，`Winedt`也支持代码片段`snippet`，配置可参考：
+
+
+
+# Markdown
 
 
 
