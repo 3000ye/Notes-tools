@@ -120,3 +120,4 @@ sudo apt install texlive-full
 
 这里主要对我个人使用的一些`Theme`进行一个备份，可见目录：[Typora-themes](https://github.com/3000ye/Notes-tools/tree/main/Typora-themes)
 
+# 使用帮助
